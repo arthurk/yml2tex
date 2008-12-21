@@ -9,7 +9,6 @@ __version__ = '1.2'
 __author__ = 'Arthur Koziel <arthur@arthurkoziel.com>'
 __url__ = 'http://code.google.com/p/yml2tex/'
 
-
 from pygments import highlight
 from pygments.lexers import get_lexer_for_filename
 from pygments.formatters import LatexFormatter
@@ -96,40 +95,42 @@ def image(title):
     out += "\n}"
     return out
 
-def header():
+def header(metas):
     """
     Return the LaTeX Beamer document header declarations.
     """
+
     out = "\documentclass[slidestop,red]{beamer}"
     out += "\n\usepackage[utf8]{inputenc}"
     out += "\n\usepackage{fancyvrb,color}\n\n"
     
     # generate style definitions for pygments syntax highlighting
-    out += LatexFormatter().get_style_defs()
+    out += LatexFormatter(style=metas.get('highlight_style', 'default')).get_style_defs()
 
     out += "\n\n\usetheme{Antibes}"
     out += "\n\setbeamertemplate{footline}[frame number]"
     out += "\n\usecolortheme{lily}"
     out += "\n\\beamertemplateshadingbackground{blue!5}{yellow!10}"
     
-    out += "\n\n\\title{Example Presentation Created with the Beamer Package}"
-    out += "\n\\author{Arthur Koziel}"
-    out += "\n\date{\\today}"
+    out += "\n\n\\title{%s}" % metas.get('title', 'Example Presentation')
+    out += "\n\\author{%s}" % metas.get('author', 'Arthur Koziel')
+    out += "\n\date{%s}" % metas.get('date', '\\today')
     out += "\n\n\\begin{document}"
     out += "\n\n\\frame{\\titlepage}"
     
-    out += "\n\n\section*{Outline}"
-    out += "\n\\frame {"
-    out += "\n\t\\frametitle{Outline}"
-    out += "\n\t\\tableofcontents"
-    out += "\n}"
+    if metas.get('outline', True):
+        out += "\n\n\section*{Outline}"
+        out += "\n\\frame {"
+        out += "\n\t\\frametitle{Outline}"
+        out += "\n\t\\tableofcontents"
+        out += "\n}"
 
-    out += "\n\n\AtBeginSection[] {"
-    out += "\n\t\\frame{"
-    out += "\n\t\t\\frametitle{Outline}"
-    out += "\n\t\t\\tableofcontents[currentsection]"
-    out += "\n\t}"
-    out += "\n}"
+        out += "\n\n\AtBeginSection[] {"
+        out += "\n\t\\frame{"
+        out += "\n\t\t\\frametitle{Outline}"
+        out += "\n\t\t\\tableofcontents[currentsection]"
+        out += "\n\t}"
+        out += "\n}"
     return out
 
 def footer():
@@ -144,7 +145,13 @@ def main(file):
     Return the final LaTeX presentation after invoking all necessary functions.
     """
     doc = yaml.load(file, Loader=PairLoader)
-    out = header()
+    
+    metas = {}
+    if doc[0][0] == 'metas':
+        metas = dict(doc[0][1])
+        del doc[0]
+    
+    out = header(metas)
     for sections, doc in doc:
         out += section(sections)
         for subsections, doc in doc:
