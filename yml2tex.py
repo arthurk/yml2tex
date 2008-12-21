@@ -48,17 +48,17 @@ def frame(title, items):
 def itemize(items):
     """
     Given the items for a frame, returns the LaTeX syntax for an itemized list.
-    If an item itself is a dictionary, a nested list will be created.
+    If an item itself is a list, a nested itemized list will be created.
     
-    The script doesn't limit the depth of nested lists. However, LaTeX Beamer 
-    class limits lists to be nested up to a depth of 3.
+    The script itself doesn't limit the depth of nested lists. LaTeX Beamer 
+    limits lists to be nested up to a depth of 3.
     """
     out = "\n\t\\begin{itemize}[<+-| alert@+>]"
     for item in items:
-        if isinstance(item, dict):
+        if isinstance(item, list):
             for i in item:
-                out += "\n\t\\item %s" % i
-                out += itemize(item[i])
+                out += "\n\t\\item %s" % item[0][0]
+                out += itemize(item[0][1])
         else:
             out += "\n\t\\item %s" % item
     out += "\n\t\end{itemize}"
