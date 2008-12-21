@@ -114,6 +114,7 @@ def header(metas):
     
     out += "\n\n\\title{%s}" % metas.get('title', 'Example Presentation')
     out += "\n\\author{%s}" % metas.get('author', 'Arthur Koziel')
+    out += "\n\\institute{%s}" % metas.get('institute', '')
     out += "\n\date{%s}" % metas.get('date', '\\today')
     out += "\n\n\\begin{document}"
     out += "\n\n\\frame{\\titlepage}"
@@ -160,3 +161,4 @@ def main(file):
                 out += frame(frames, items)
     out += footer()
     return out.encode('utf-8')
+    
