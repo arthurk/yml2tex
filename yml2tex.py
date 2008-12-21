@@ -5,6 +5,11 @@
 Usage: bin/yml2tex input.yml > output.tex
 """
 
+__version__ = '1.2'
+__author__ = 'Arthur Koziel <arthur@arthurkoziel.com>'
+__url__ = 'http://code.google.com/p/yml2tex/'
+
+
 from pygments import highlight
 from pygments.lexers import get_lexer_for_filename
 from pygments.formatters import LatexFormatter
@@ -97,75 +102,10 @@ def header():
     """
     out = "\documentclass[slidestop,red]{beamer}"
     out += "\n\usepackage[utf8]{inputenc}"
-    out += "\n\usepackage{fancyvrb,color}"
+    out += "\n\usepackage{fancyvrb,color}\n\n"
     
-    out += r'''
-
-% pygments
-\newcommand\at{@}
-\newcommand\lb{[}
-\newcommand\rb{]}
-\newcommand\PYbh[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
-\newcommand\PYbg[1]{\textcolor[rgb]{0.73,0.40,0.53}{\textbf{#1}}}
-\newcommand\PYbf[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
-\newcommand\PYbe[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
-\newcommand\PYbd[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
-\newcommand\PYbc[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
-\newcommand\PYbb[1]{\textcolor[rgb]{0.00,0.00,0.50}{\textbf{#1}}}
-\newcommand\PYba[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
-\newcommand\PYaJ[1]{\textcolor[rgb]{0.69,0.00,0.25}{#1}}
-\newcommand\PYaK[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
-\newcommand\PYaH[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
-\newcommand\PYaI[1]{\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{#1}}
-\newcommand\PYaN[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
-\newcommand\PYaO[1]{\textcolor[rgb]{0.00,0.00,1.00}{\textbf{#1}}}
-\newcommand\PYaL[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
-\newcommand\PYaM[1]{\textcolor[rgb]{0.73,0.73,0.73}{#1}}
-\newcommand\PYaB[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
-\newcommand\PYaC[1]{\textcolor[rgb]{0.00,0.25,0.82}{#1}}
-\newcommand\PYaA[1]{\textcolor[rgb]{0.00,0.63,0.00}{#1}}
-\newcommand\PYaF[1]{\textcolor[rgb]{0.63,0.00,0.00}{#1}}
-\newcommand\PYaG[1]{\textcolor[rgb]{1.00,0.00,0.00}{#1}}
-\newcommand\PYaD[1]{\textcolor[rgb]{0.67,0.13,1.00}{#1}}
-\newcommand\PYaE[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
-\newcommand\PYaZ[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
-\newcommand\PYaX[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
-\newcommand\PYaY[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
-\newcommand\PYaR[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
-\newcommand\PYaS[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
-\newcommand\PYaP[1]{\textcolor[rgb]{0.00,0.00,0.50}{\textbf{#1}}}
-\newcommand\PYaQ[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
-\newcommand\PYaV[1]{\textcolor[rgb]{0.82,0.25,0.23}{\textbf{#1}}}
-\newcommand\PYaW[1]{\textcolor[rgb]{0.00,0.00,1.00}{\textbf{#1}}}
-\newcommand\PYaT[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
-\newcommand\PYaU[1]{\textcolor[rgb]{0.50,0.00,0.50}{\textbf{#1}}}
-\newcommand\PYaj[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
-\newcommand\PYak[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
-\newcommand\PYah[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
-\newcommand\PYai[1]{\textcolor[rgb]{0.63,0.63,0.00}{#1}}
-\newcommand\PYan[1]{\textbf{#1}}
-\newcommand\PYao[1]{\textcolor[rgb]{0.67,0.13,1.00}{\textbf{#1}}}
-\newcommand\PYal[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
-\newcommand\PYam[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
-\newcommand\PYab[1]{\textit{#1}}
-\newcommand\PYac[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
-\newcommand\PYaa[1]{\textcolor[rgb]{0.50,0.50,0.50}{#1}}
-\newcommand\PYaf[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
-\newcommand\PYag[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
-\newcommand\PYad[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
-\newcommand\PYae[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
-\newcommand\PYaz[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
-\newcommand\PYax[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
-\newcommand\PYay[1]{\textcolor[rgb]{0.60,0.60,0.60}{\textbf{#1}}}
-\newcommand\PYar[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
-\newcommand\PYas[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
-\newcommand\PYap[1]{\textcolor[rgb]{0.73,0.40,0.13}{\textbf{#1}}}
-\newcommand\PYaq[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
-\newcommand\PYav[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
-\newcommand\PYaw[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
-\newcommand\PYat[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
-\newcommand\PYau[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
-% end pygments'''
+    # generate style definitions for pygments syntax highlighting
+    out += LatexFormatter().get_style_defs()
 
     out += "\n\n\usetheme{Antibes}"
     out += "\n\setbeamertemplate{footline}[frame number]"

@@ -10,5 +10,5 @@ if __name__ == '__main__':
         print yml2tex.__doc__
     else:
         file = open(argv[1])
-        print yml2tex.main(file.read())
+        print yml2tex.main(file)
         file.close()
