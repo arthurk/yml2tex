@@ -8,25 +8,10 @@ Usage: bin/yml2tex input.yml > output.tex
 from pygments import highlight
 from pygments.lexers import get_lexer_for_filename
 from pygments.formatters import LatexFormatter
+
 import yaml
 
-def separate(doc):
-    """
-    Given the parsed document structure, return a separated list where the first 
-    value is a key and the second value all its underlying elements. 
-    
-    For example, the first value might be a section and the second value all 
-    its subsections.
-        
-    Examples:
-    
-    >>> separate([{'a': [{'b': [{'c': ['d', 'e', 'f']}]}]}])
-    [('a', [{'b': [{'c': ['d', 'e', 'f']}]}])]
-    
-    >>> separate([{'c': ['d', 'e', 'f']}])
-    [('c', ['d', 'e', 'f'])]
-    """
-    return [(k, j[k]) for i, j in enumerate(doc) for k in j]
+from loader import PairLoader
 
 def section(title):
     """
@@ -213,18 +198,18 @@ def footer():
     """
     out = "\n\end{document}"
     return out
-
-def main(text):
+    
+def main(file):
     """
     Return the final LaTeX presentation after invoking all necessary functions.
     """
-    doc = yaml.load(text)
+    doc = yaml.load(file, Loader=PairLoader)
     out = header()
-    for sections, doc in separate(doc):
+    for sections, doc in doc:
         out += section(sections)
-        for subsections, doc in separate(doc):
+        for subsections, doc in doc:
             out += subsection(subsections)
-            for frames, items in separate(doc):
+            for frames, items in doc:
                 out += frame(frames, items)
     out += footer()
     return out.encode('utf-8')
