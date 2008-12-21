@@ -37,7 +37,7 @@ def frame(title, items):
     if title.startswith('include'):
         out = code(title)
     elif title.startswith('image'):
-        out = image(title)
+        out = image(title, items)
     else:
         out = "\n\\frame {"
         out += "\n\t\\frametitle{%s}" % title
@@ -85,13 +85,17 @@ def code(title):
     out += "\n\end{frame}"
     return out
 
-def image(title):
+def image(title, options):
     """
     Given a frame title, which starts with "image" and is followed by the image 
     path, return the LaTeX command to include the image.
     """
+    if not options:
+        options = ""
+    options = ",".join(["%s=%s" % (k, v) for k, v in dict(options).items()])
+    
     out = "\n\\frame[shrink] {"
-    out += "\n\t\\pgfimage{%s}" % title.split(' ')[1]
+    out += "\n\t\\pgfimage[%s]{%s}" % (options, title.split(' ')[1])
     out += "\n}"
     return out
 
@@ -161,4 +165,3 @@ def main(file):
                 out += frame(frames, items)
     out += footer()
     return out.encode('utf-8')
-    
