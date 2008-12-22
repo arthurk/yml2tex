@@ -1,0 +1,43 @@
+metas:
+  title: yml2tex
+
+Introduction:
+  Why?:
+    Why?:
+      - Creating Presentations in PowerPoint/Keynote etc. takes too long:
+        - No automatic TOC generation
+        - No Code Highlighting
+        - Applications not for free
+        - Proprietary formats
+Features:
+  General:
+    General:
+      - Easy & fast to generate simple presentations
+      - Adds a nice default style to the document
+      - Generates a TOC out of sections/subsections
+      - Separates content from presentation
+  Lists:
+    Itemized Lists:
+      - Item
+      - Item:
+        - Sub-Item:
+          - Sub-Sub-Item
+          - Sub-Sub-Item
+      - Item
+      - Item
+  Code Highlighting:
+    include foobar.py:
+    Source Code:
+      - Syntax:
+        - "include foobar.py:"
+      - Uses Pygments for highlighting
+      - Style can be changed:
+        - "highlight_style: colorful"
+  Images:
+    image foobar:
+    Images:
+        - Syntax:
+          - "image foobar.png:"
+        - Optional options:
+          - "width: 10cm"
+          - "height: 15cm"

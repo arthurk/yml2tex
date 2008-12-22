@@ -1,0 +1,60 @@
+yml2tex is a simple Python script which generates LaTeX Beamer presentations out of YAML files.
+
+Metadata
+========
+
+It's possible to specify metadata for the document in the YAML file itself.
+
+- Create a "metas" at the top of the yaml file
+- Possible options are:
+    - title <string> If not specified, 'Example Presentation' is used.
+    - author <string> If not specified, 'Arthur Koziel' is used.
+    - institute <string> If not specified, nothing is used.
+    - date <string> If not specified, current date is used.
+    - outline <boolean> If an Outline/Table of contents should be generated. True if not specified.
+    - highlight_style <string> Pygments style for code highlighting. If not specified 'default' is used.
+
+Example:
+
+    metas:
+        title: My First Presentation
+        author: Arthur Koziel
+        institute: FH-Dortmund
+        date: 14.11.2008
+        outline: False
+        highlight_style: colorful
+
+Images
+======
+
+- Don't specify the filename extension (JPG and PNG are supported).
+- Options are optional and directly passed to the \pgfimage command:
+    - width
+    - height
+    - page
+    - interpolate
+    - mask
+- If no options are specified, the image will be the same size as the frame.
+
+Example:
+    
+    Features:
+      Images:
+        image bar:
+        image foo:
+            width: 10cm
+            height: 30cm
+
+Code Highlighting
+=================
+
+- Pygments is used to highlight code.
+- No options are supported.
+
+Example:
+
+    Features:
+      Code Highlighting:
+        include foobar.py:
+
+The above command will include and highlight the content of foobar.py.
