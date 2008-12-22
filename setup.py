@@ -8,7 +8,7 @@ setup(name='yml2tex',
       author='Arthur Koziel',
       author_email='arthur@arthurkoziel.com',
       url='http://code.google.com/p/yml2tex/',
-      py_modules=['yml2tex'],
+      packages=['yml2tex'],
       scripts=['bin/yml2tex'],
       classifiers=[
           'Development Status :: 5 - Production/Stable',
