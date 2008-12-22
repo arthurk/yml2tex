@@ -21,13 +21,13 @@ def section(title):
     """
     Given the section title, return its corresponding LaTeX command.
     """
-    return '\n\n\section{%s}' % title
+    return '\n\n\section{%s}' % _escape_output(title)
 
 def subsection(title):
     """
     Given the subsection title, return its corresponding LaTeX command.
     """
-    return '\n\subsection{%s}' % title
+    return '\n\subsection{%s}' % _escape_output(title)
 
 def frame(title, items):
     """
@@ -40,10 +40,24 @@ def frame(title, items):
         out = image(title, items)
     else:
         out = "\n\\frame {"
-        out += "\n\t\\frametitle{%s}" % title
+        out += "\n\t\\frametitle{%s}" % _escape_output(title)
         out += itemize(items)
         out += "\n}"
     return out
+
+def _escape_output(text):
+    """Escape special characters in Latex"""
+    dic = {'&': '\&', 
+           '$': '\$', 
+           '%': '\%', 
+           '#': '\#', 
+           '_': '\_', 
+           '{': '\{', 
+           '}': '\}'}
+    
+    for i, j in dic.iteritems():  
+        text = text.replace(i, j)
+    return text
 
 def itemize(items):
     """
@@ -57,10 +71,10 @@ def itemize(items):
     for item in items:
         if isinstance(item, list):
             for i in item:
-                out += "\n\t\\item %s" % item[0][0]
+                out += "\n\t\\item %s" % _escape_output(item[0][0])
                 out += itemize(item[0][1])
         else:
-            out += "\n\t\\item %s" % item
+            out += "\n\t\\item %s" % _escape_output(item)
     out += "\n\t\end{itemize}"
     return out
 
@@ -81,7 +95,7 @@ def code(title):
     
     out = "\n\\begin{frame}[fragile,t]"
     out += "\n\t\\frametitle{Code: \"%s\"}" % filename
-    out += code    
+    out += code
     out += "\n\end{frame}"
     return out
 
