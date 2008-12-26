@@ -8,9 +8,7 @@ from yaml.resolver import *
 class PairLoader(Reader, Scanner, Parser, PairComposer, Constructor, Resolver):
 
     def __init__(self, stream):
-        Constructor.add_constructor(
-            u'!omap',
-            self.omap_constructor)
+        Constructor.add_constructor(u'!omap', self.omap_constructor)
         
         Reader.__init__(self, stream)
         Scanner.__init__(self)

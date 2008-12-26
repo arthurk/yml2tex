@@ -9,7 +9,7 @@ setup(name='yml2tex',
       author_email='arthur@arthurkoziel.com',
       url='http://code.google.com/p/yml2tex/',
       packages=['yml2tex'],
-      scripts=['bin/yml2tex'],
+      scripts=['scripts/yml2tex'],
       classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Environment :: Console',

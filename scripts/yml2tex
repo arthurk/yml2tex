@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+
+import yml2tex
+
+print yml2tex.main()

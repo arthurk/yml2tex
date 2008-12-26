@@ -10,6 +10,7 @@ Version 1.2 - tba
       subsection, frame or item title/text.
     * Added possibility to pass options to the image command
       Pass options like height or width directly to the pgfimage command.
+    * Use Python's optparse for the CLI
     
 Version 1.1 - October 16, 2008
     * Dropped idiopidae and zapps dependency as code is now highlighted directly through Pygments.

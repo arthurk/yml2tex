@@ -9,13 +9,20 @@ __version__ = '1.2'
 __author__ = 'Arthur Koziel <arthur@arthurkoziel.com>'
 __url__ = 'http://code.google.com/p/yml2tex/'
 
+import sys
+import optparse
+
 from pygments import highlight
 from pygments.lexers import get_lexer_for_filename
 from pygments.formatters import LatexFormatter
 
 import yaml
-
 from loader import PairLoader
+
+parser = optparse.OptionParser(
+    usage="usage: %prog source_file [options]",
+    version=__version__,
+)
 
 def section(title):
     """
@@ -159,17 +166,29 @@ def footer():
     out = "\n\end{document}"
     return out
     
-def main(file):
+def main():
     """
     Return the final LaTeX presentation after invoking all necessary functions.
     """
-    doc = yaml.load(file, Loader=PairLoader)
+    options, args = parser.parse_args(sys.argv[1:])
+    if not args:
+        parser.print_help()
+        sys.exit(1)
+    try:
+        doc = yaml.load(open(args[0]), Loader=PairLoader)
+    except IOError:
+        parser.error("file does not exist")
+        sys.exit(1)
+
+    # yaml file is empty
+    if not doc:
+        sys.exit(1)
     
     metas = {}
     if doc[0][0] == 'metas':
         metas = dict(doc[0][1])
         del doc[0]
-    
+
     out = header(metas)
     for sections, doc in doc:
         out += section(sections)
@@ -179,3 +198,6 @@ def main(file):
                 out += frame(frames, items)
     out += footer()
     return out.encode('utf-8')
+
+if __name__ == '__main__':
+    print main()
