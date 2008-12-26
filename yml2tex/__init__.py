@@ -9,8 +9,9 @@ __version__ = '1.2'
 __author__ = 'Arthur Koziel <arthur@arthurkoziel.com>'
 __url__ = 'http://code.google.com/p/yml2tex/'
 
-import sys
+import os
 import optparse
+import sys
 
 from pygments import highlight
 from pygments.lexers import get_lexer_for_filename
@@ -96,7 +97,7 @@ def code(title):
     except:
         lexer = get_lexer_by_name('text')
     
-    f = open(filename, 'r')
+    f = open(os.path.join(os.path.dirname(os.path.abspath(source_file)), filename))
     code = highlight(f.read(), lexer, LatexFormatter())
     f.close()
     
@@ -175,7 +176,9 @@ def main():
         parser.print_help()
         sys.exit(1)
     try:
-        doc = yaml.load(open(args[0]), Loader=PairLoader)
+        global source_file
+        source_file = args[0]
+        doc = yaml.load(open(source_file), Loader=PairLoader)
     except IOError:
         parser.error("file does not exist")
         sys.exit(1)
