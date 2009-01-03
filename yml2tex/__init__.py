@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
-"""Transform a YAML file into a LaTeX Beamer presentation.
+"""
+Transform a YAML file into a LaTeX Beamer presentation.
 
 Usage: bin/yml2tex input.yml > output.tex
 """
@@ -12,10 +13,6 @@ __url__ = 'http://code.google.com/p/yml2tex/'
 import os
 import optparse
 import sys
-
-from pygments import highlight
-from pygments.lexers import get_lexer_for_filename
-from pygments.formatters import LatexFormatter
 
 import yaml
 from loader import PairLoader
@@ -92,18 +89,28 @@ def code(title):
     """
     filename = title.split(' ')[1]
     
-    try:
-        lexer = get_lexer_for_filename(filename)
-    except:
-        lexer = get_lexer_by_name('text')
-    
+    # open the code file relative from the yml file path
     f = open(os.path.join(os.path.dirname(os.path.abspath(source_file)), filename))
-    code = highlight(f.read(), lexer, LatexFormatter())
-    f.close()
     
     out = "\n\\begin{frame}[fragile,t]"
     out += "\n\t\\frametitle{Code: \"%s\"}" % filename
-    out += code
+    
+    try:
+        from pygments import highlight
+        from pygments.lexers import get_lexer_for_filename, get_lexer_by_name
+        from pygments.formatters import LatexFormatter
+        
+        try:
+            lexer = get_lexer_for_filename(filename)
+        except:
+            lexer = get_lexer_by_name('text')
+        out += "\n%s\n" % highlight(f.read(), lexer, LatexFormatter(linenos=True))
+    except ImportError:
+        out += "\n\t\\begin{lstlisting}\n"
+        out += f.read()
+        out += "\n\t\end{lstlisting}"
+        
+    f.close()
     out += "\n\end{frame}"
     return out
 
@@ -131,7 +138,12 @@ def header(metas):
     out += "\n\usepackage{fancyvrb,color}\n\n"
     
     # generate style definitions for pygments syntax highlighting
-    out += LatexFormatter(style=metas.get('highlight_style', 'default')).get_style_defs()
+    try:
+        from pygments.formatters import LatexFormatter
+        out += LatexFormatter(style=metas.get('highlight_style', 'default')).get_style_defs()
+    except ImportError:
+        out += "\usepackage{listings}\n"
+        out += "\lstset{numbers=left}"
 
     out += "\n\n\usetheme{Antibes}"
     out += "\n\setbeamertemplate{footline}[frame number]"
