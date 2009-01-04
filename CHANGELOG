@@ -1,23 +1,18 @@
 Version 1.2 - tba
-    * Dash before each line is no longer required.
-      Implemented a custom loader for pyyaml which eliminates the need for 
-      dashes before each line.
-    * Support for Metadata in YAML document
-      Metadata like the presentation title, author or date can now be directly
-      specified in the YAML file.
-    * Auto-Escape special LaTeX characters
-      Automatically escape special characters like &, $ or {} in the section, 
-      subsection, frame or item title/text.
-    * Added possibility to pass options to the image command
-      Pass options like height or width directly to the pgfimage command.
-    * Use Python's optparse for the CLI
-    * Include code files relative to the .yml file's path.
-    * Made Pygments optional. If Pygments cannot be found, the source code will
-      be included but not highlighted.
+    * Syntax change: A dash before each section, subsection and frame 
+      is no longer required
+    * Support for Metadata directly in the YAML document
+    * Auto-escape LaTeX special characters
+    * Possibility to pass options to the image command
+    * Use optparse for parsing command-line options
+    * Search for code files relative from the .yml file's path
+    * Made Pygments optional. If Pygments cannot be found, the source 
+      code will be included but not highlighted
     
 Version 1.1 - October 16, 2008
-    * Dropped idiopidae and zapps dependency as code is now highlighted directly through Pygments.
+    * Dropped idiopidae and zapps dependency as the code is now 
+      highlighted directly through Pygments
     * Create setup.py file and make package easy_install-able
 
 Version 1.0 - June 23, 2008
-    * Initial release based off of Zed Shaw's script. 
+    * Initial release based off of Zed Shaw's script.
