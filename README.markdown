@@ -71,7 +71,7 @@ options as of writing this are:
 * page
 * interpolate
 * mask
-    
+
 If no options are specified, the image will be the same size as the frame.
 
 Metadata
@@ -116,6 +116,6 @@ YAML file's path.
 
 This example below would include and highlight the contents of *"foobar.py"*.
 
-  Features:
-      Code Highlighting:
-          include foobar.py:
+    Features:
+        Code Highlighting:
+            include foobar.py:
