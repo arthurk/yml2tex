@@ -7,8 +7,8 @@ out of YAML files.
 Requirements
 ------------
 
-- PyYAML 3.07
-- Pygments (Optional, used for syntax highlighting)
+- [PyYAML][pyyaml] 3.07
+- [Pygments][pygments] 1.0 (Optional, used for syntax highlighting)
 
 Structure
 ---------
@@ -119,3 +119,6 @@ This example below would include and highlight the contents of *"foobar.py"*.
     Features:
         Code Highlighting:
             include foobar.py:
+
+[pyyaml]: http://pyyaml.org/
+[pygments]: http://pygments.org/
