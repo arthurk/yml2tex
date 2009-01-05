@@ -7,8 +7,7 @@ out of YAML files.
 Requirements
 ------------
 
-- Python 2.4
-- PyYaml 3.07
+- PyYAML 3.07
 - Pygments (Optional, used for syntax highlighting)
 
 Structure
@@ -67,11 +66,11 @@ in LaTeX automatically searches for JPG and PNG files.
 Options will be passed directly to the \pgfimage command, the supported
 options as of writing this are:
 
-- width
-- height
-- page
-- interpolate
-- mask
+* width
+* height
+* page
+* interpolate
+* mask
     
 If no options are specified, the image will be the same size as the frame.
 
@@ -83,12 +82,12 @@ It's possible to specify metadata for the document in the YAML file itself.
 To do this, create a "metas" key at the top of the YAML file. The supported
 options are:
 
-- **title** *<string>* If not specified, 'Example Presentation' is used.
-- **author** *<string>* If not specified, 'Arthur Koziel' is used.
-- **institute** *<string>* If not specified, nothing is used.
-- **date** *<string>* If not specified, current date is used.
-- **outline** *<boolean>* If an Outline/Table of contents should be generated. True if not specified.
-- **highlight_style** *<string>* Pygments style for code highlighting. If not specified 'default' is used.
+* **title** *(string)* If not specified, 'Example Presentation' is used.
+* **author** *(string)* If not specified, 'Arthur Koziel' is used.
+* **institute** *(string)* If not specified, nothing is used.
+* **date** *(string)* If not specified, current date is used.
+* **outline** *(boolean)* If an Outline/Table of contents should be generated. True if not specified.
+* **highlight\_style** *(string)* Pygments style for code highlighting. If not specified 'default' is used.
 
 Example:
 
@@ -108,7 +107,7 @@ is available). If Pygments is not available the source code will still be
 included but not highlighted.
 
 Per default Pygments *"default"* style is used. You can change it by
-specifying a *"highlight_style"* in the Metadata. The Pygments Lexer is guessed 
+specifying a *"highlight\_style"* in the Metadata. The Pygments Lexer is guessed 
 by the filename.
 
 To include the source code of a file, use the *"include"* keyword followed by 
