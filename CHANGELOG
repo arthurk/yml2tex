@@ -1,4 +1,4 @@
-Version 1.2 - tba
+Version 1.2 - January 5, 2009
     * Syntax change: A dash before each section, subsection and frame 
       is no longer required
     * Support for Metadata directly in the YAML document
