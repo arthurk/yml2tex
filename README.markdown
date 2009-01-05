@@ -1,17 +1,21 @@
+yml2tex
+=======
+
 yml2tex is a simple python script which generates LaTeX Beamer code 
 out of YAML files.
 
 Requirements
-============
+------------
 
 - Python 2.4
 - PyYaml 3.07
 - Pygments (Optional, used for syntax highlighting)
 
 Structure
-=========
+---------
 
-LaTeX Beamer presentations are structured in sections, subsections and frames.
+Since LaTeX Beamer presentations are structured in sections, subsections 
+and frames, the YAML file must have the following structure:
 
     Introduction:
         About this presentation:
@@ -20,12 +24,12 @@ LaTeX Beamer presentations are structured in sections, subsections and frames.
                 - Age
                 - Occupation
                 
-In the above example "Introduction" would be the title of the section, 
-"About this presentation" the title of the subsection and "Author" the frame
-title. "Name", "Age" and "Occupation" would be items in a list.
+"Introduction" would be the title of the section, "About this presentation" 
+the title of the subsection and "Author" the frame title. 
+"Name", "Age" and "Occupation" would be items in a list.
 
 Nested Items
-============
+------------
 
 Each item can have other items associated.
 
@@ -42,7 +46,7 @@ The script doesn't limit the depth of nested items, however LaTeX Beamer
 does limit it up to three items.
 
 Images
-======
+------
 
 It's possible to create a frame with an image in it by using the 
 "image" keyword followed by the image path as a frame title.
@@ -72,7 +76,7 @@ options as of writing this are:
 If no options are specified, the image will be the same size as the frame.
 
 Metadata
-========
+--------
 
 It's possible to specify metadata for the document in the YAML file itself.
 
@@ -97,7 +101,7 @@ Example:
         highlight_style: colorful
 
 Code Highlighting
-=================
+-----------------
 
 It is possible to include source code in a frame and highlight it (if Pygments
 is available). If Pygments is not available the source code will still be
