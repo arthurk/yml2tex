@@ -10,6 +10,18 @@ Requirements
 - [PyYAML][pyyaml] 3.07
 - [Pygments][pygments] 1.0 (Optional, used for syntax highlighting)
 
+Usage
+-----
+
+Pass yml2tex a YAML file as the first argument. The output will
+be printed to stdout.
+
+    yml2tex foobar.yml > foobar.tex
+    
+The document can then be compiled:
+
+    pdflatex foobar.tex
+
 Structure
 ---------
 
