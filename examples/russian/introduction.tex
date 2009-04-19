@@ -1,0 +1,192 @@
+\documentclass[slidestop,red]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage{fancyvrb,color}
+
+\newcommand\PYZat{@}
+\newcommand\PYZlb{[}
+\newcommand\PYZrb{]}
+\newcommand\PYbh[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYbg[1]{\textcolor[rgb]{0.73,0.40,0.53}{\textbf{#1}}}
+\newcommand\PYbf[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYbe[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYbd[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYbc[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYbb[1]{\textcolor[rgb]{0.00,0.00,0.50}{\textbf{#1}}}
+\newcommand\PYba[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYaJ[1]{\textcolor[rgb]{0.69,0.00,0.25}{#1}}
+\newcommand\PYaK[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYaH[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand\PYaI[1]{\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{#1}}
+\newcommand\PYaN[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand\PYaO[1]{\textcolor[rgb]{0.00,0.00,1.00}{\textbf{#1}}}
+\newcommand\PYaL[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
+\newcommand\PYaM[1]{\textcolor[rgb]{0.73,0.73,0.73}{#1}}
+\newcommand\PYaB[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand\PYaC[1]{\textcolor[rgb]{0.00,0.25,0.82}{#1}}
+\newcommand\PYaA[1]{\textcolor[rgb]{0.00,0.63,0.00}{#1}}
+\newcommand\PYaF[1]{\textcolor[rgb]{0.63,0.00,0.00}{#1}}
+\newcommand\PYaG[1]{\textcolor[rgb]{1.00,0.00,0.00}{#1}}
+\newcommand\PYaD[1]{\textcolor[rgb]{0.67,0.13,1.00}{#1}}
+\newcommand\PYaE[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
+\newcommand\PYaZ[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYaX[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYaY[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand\PYaR[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYaS[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand\PYaP[1]{\textcolor[rgb]{0.00,0.00,0.50}{\textbf{#1}}}
+\newcommand\PYaQ[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand\PYaV[1]{\textcolor[rgb]{0.82,0.25,0.23}{\textbf{#1}}}
+\newcommand\PYaW[1]{\textcolor[rgb]{0.00,0.00,1.00}{\textbf{#1}}}
+\newcommand\PYaT[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
+\newcommand\PYaU[1]{\textcolor[rgb]{0.50,0.00,0.50}{\textbf{#1}}}
+\newcommand\PYaj[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand\PYak[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
+\newcommand\PYah[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand\PYai[1]{\textcolor[rgb]{0.63,0.63,0.00}{#1}}
+\newcommand\PYan[1]{\textbf{#1}}
+\newcommand\PYao[1]{\textcolor[rgb]{0.67,0.13,1.00}{\textbf{#1}}}
+\newcommand\PYal[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand\PYam[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYab[1]{\textit{#1}}
+\newcommand\PYac[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYaa[1]{\textcolor[rgb]{0.50,0.50,0.50}{#1}}
+\newcommand\PYaf[1]{\textcolor[rgb]{0.25,0.50,0.50}{\textit{#1}}}
+\newcommand\PYag[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYad[1]{\textcolor[rgb]{0.73,0.13,0.13}{#1}}
+\newcommand\PYae[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYaz[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYax[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYay[1]{\textcolor[rgb]{0.60,0.60,0.60}{\textbf{#1}}}
+\newcommand\PYar[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand\PYas[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand\PYap[1]{\textcolor[rgb]{0.73,0.40,0.13}{\textbf{#1}}}
+\newcommand\PYaq[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand\PYav[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand\PYaw[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand\PYat[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand\PYau[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+
+\usetheme{Antibes}
+\setbeamertemplate{footline}[frame number]
+\usecolortheme{lily}
+\beamertemplateshadingbackground{blue!5}{yellow!10}
+
+\title{yml2tex (по-русски)}
+\author{Юревич Юрий <the.pythy@gmail.com>}
+\institute{}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section*{Outline}
+\frame {
+	\frametitle{Outline}
+	\tableofcontents
+}
+
+\AtBeginSection[] {
+	\frame{
+		\frametitle{Outline}
+		\tableofcontents[currentsection]
+	}
+}
+
+\section{Введение}
+\subsection{Зачем}
+\frame {
+	\frametitle{Зачем}
+	\begin{itemize}[<+-| alert@+>]
+	\item Создание презентаций PowerPoint/Keynote и т.д. занимает слишком много времени
+	\begin{itemize}[<+-| alert@+>]
+	\item Нет автоматической генерации оглавления
+	\item Нет подсветки кода
+	\item Это не свободное ПО
+	\item Проприетарные форматы
+	\end{itemize}
+	\end{itemize}
+}
+
+\section{Возможности}
+\subsection{В целом}
+\frame {
+	\frametitle{В целом}
+	\begin{itemize}[<+-| alert@+>]
+	\item Легкое и быстрое создание несложных презентаций
+	\item Приятный стиль по умолчанию
+	\item Генерирует оглавления для разделов/подразделов
+	\item Отделение контента от презентации
+	\end{itemize}
+}
+\subsection{Списки}
+\frame {
+	\frametitle{Ненумерованные списки}
+	\begin{itemize}[<+-| alert@+>]
+	\item Элемент
+	\item Другой элемент
+	\begin{itemize}[<+-| alert@+>]
+	\item Элемент второго уровня
+	\begin{itemize}[<+-| alert@+>]
+	\item Элемент третьего уровня
+	\item Еще элемент третьего уровня
+	\end{itemize}
+	\end{itemize}
+	\item Следующий элемент
+	\item Завершающий элемент
+	\end{itemize}
+}
+\subsection{Подсветка кода}
+\begin{frame}[fragile,t]
+	\frametitle{Code: "foobar.py"}
+\begin{Verbatim}[commandchars=@\[\],numbers=left,firstnumber=1,stepnumber=1]
+@PYaE[#!/usr/bin/env python]
+@PYaE[# encoding: utf-8]
+
+@PYam[import] @PYaW[sys]
+@PYam[import] @PYaW[os]
+
+@PYaz[def] @PYaL[main]():
+    @PYaz[pass]
+
+@PYaz[if] __name__ @PYbf[==] @PYad[']@PYad[__main__]@PYad[']:
+    main()
+\end{Verbatim}
+
+
+\end{frame}
+\frame {
+	\frametitle{Исходный код}
+	\begin{itemize}[<+-| alert@+>]
+	\item Синтаксис
+	\begin{itemize}[<+-| alert@+>]
+	\item include foobar.py:
+	\end{itemize}
+	\item Для подсветки используется Pygments
+	\item Стиль можно поменять
+	\begin{itemize}[<+-| alert@+>]
+	\item highlight\_style: colorful
+	\end{itemize}
+	\end{itemize}
+}
+\subsection{Картинки}
+\frame[shrink] {
+	\pgfimage[]{foobar}
+}
+\frame {
+	\frametitle{Картинки}
+	\begin{itemize}[<+-| alert@+>]
+	\item Синтаксис
+	\begin{itemize}[<+-| alert@+>]
+	\item image foobar.png:
+	\end{itemize}
+	\item Необязательные опции
+	\begin{itemize}[<+-| alert@+>]
+	\item width: 10cm
+	\item height: 15cm
+	\end{itemize}
+	\end{itemize}
+}
+\end{document}
