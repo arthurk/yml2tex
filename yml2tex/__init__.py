@@ -149,6 +149,10 @@ def header(metas):
 
     out = "\documentclass[slidestop,red]{beamer}"
     out += "\n\usepackage[utf8]{inputenc}"
+    if metas.get('tex_babel'):
+        out += "\n\usepackage[%s]{babel}" % metas['tex_babel']
+    if metas.get('tex_fontenc'):
+        out += "\n\usepackage[%s]{fontenc}" % metas['tex_fontenc']
     out += "\n\usepackage{fancyvrb,color}\n\n"
     
     # generate style definitions for pygments syntax highlighting
