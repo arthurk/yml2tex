@@ -180,15 +180,15 @@ def header(metas):
     out += "\n\n\\frame{\\titlepage}"
     
     if metas.get('outline', True):
-        out += "\n\n\section*{Outline}"
+        out += "\n\n\section*{%s}" % metas.get('outline_name', 'Outline')
         out += "\n\\frame {"
-        out += "\n\t\\frametitle{Outline}"
+        out += "\n\t\\frametitle{%s}" % metas.get('outline_name', 'Outline')
         out += "\n\t\\tableofcontents"
         out += "\n}"
 
         out += "\n\n\AtBeginSection[] {"
         out += "\n\t\\frame{"
-        out += "\n\t\t\\frametitle{Outline}"
+        out += "\n\t\t\\frametitle{%s}" % metas.get('outline_name', 'Outline')
         out += "\n\t\t\\tableofcontents[currentsection]"
         out += "\n\t}"
         out += "\n}"
