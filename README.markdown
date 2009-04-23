@@ -95,6 +95,7 @@ To do this, create a "metas" key at the top of the YAML file. The supported
 options are:
 
 * **title** *(string)* If not specified, 'Example Presentation' is used.
+* **short_title** *(string)* Short title to appear on top. If not specified, the contents of **title** is used.
 * **author** *(string)* If not specified, 'Arthur Koziel' is used.
 * **institute** *(string)* If not specified, nothing is used.
 * **date** *(string)* If not specified, current date is used.
@@ -105,6 +106,7 @@ Example:
 
     metas:
         title: My First Presentation
+        short_title: Presentation
         author: Arthur Koziel
         institute: FH-Dortmund
         date: 14.11.2008
