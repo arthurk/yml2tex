@@ -168,7 +168,11 @@ def header(metas):
     out += "\n\usecolortheme{lily}"
     out += "\n\\beamertemplateshadingbackground{blue!5}{yellow!10}"
     
-    out += "\n\n\\title{%s}" % metas.get('title', 'Example Presentation')
+    if metas.has_key('short_title'):
+        short_title = "[%s]" % metas.get('short_title')
+    else:
+        short_title = ""
+    out += "\n\n\\title%s{%s}" % (short_title, metas.get('title', 'Example Presentation'))
     out += "\n\\author{%s}" % metas.get('author', 'Arthur Koziel')
     out += "\n\\institute{%s}" % metas.get('institute', '')
     out += "\n\date{%s}" % metas.get('date', '\\today')
