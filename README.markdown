@@ -101,6 +101,7 @@ options are:
 * **date** *(string)* If not specified, current date is used.
 * **outline** *(boolean)* If an Outline/Table of contents should be generated. True if not specified.
 * **highlight\_style** *(string)* Pygments style for code highlighting. If not specified 'default' is used.
+* **outline_name** *(string)* Custom outline text. If not specified, 'Outline' is used.
 
 Example:
 
@@ -112,6 +113,7 @@ Example:
         date: 14.11.2008
         outline: False
         highlight_style: colorful
+        outline_name: Contents
 
 Code Highlighting
 -----------------
